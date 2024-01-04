@@ -1,14 +1,26 @@
-import * as stylex from '@stylexjs/stylex';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-const style = stylex.create({
-    app: {
-        color: 'red',
-        fontSize: '40px',
-    },
-});
+import Layout from './layout';
+import Home from './pages/Home';
+import Sales from './pages/Sales';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import ErrorPage from './pages/ErrorPage';
 
 const App = () => {
-    return <div {...stylex.props(style.app)}>App</div>;
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Layout />}>
+                    <Route index={true} element={<Home />} />
+                    <Route path='sales' element={<Sales />} />
+                    <Route path='login' element={<Login />} />
+                    <Route path='signup' element={<Signup />} />
+                </Route>
+                <Route path='*' element={<ErrorPage />} />
+            </Routes>
+        </BrowserRouter>
+    );
 };
 
 export default App;
