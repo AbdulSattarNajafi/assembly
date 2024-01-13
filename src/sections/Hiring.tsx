@@ -5,30 +5,46 @@ import HiringImage from './../assets/images/hiring.png';
 import PlusIcon from './../assets/icons/plus.svg';
 import ArrowIcon from './../assets/icons/arrow-right.svg';
 import { Link } from 'react-router-dom';
+import { typography } from '../styles/typography.stylex';
+import { colors, shadow } from '../styles/tokens.stylex';
 
 const style = stylex.create({
     hiring: {
-        paddingTop: '145px',
-        paddingBottom: '65px',
+        padding: {
+            default: '80px 0 40px 0',
+            '@media (min-width: 768px)': '100px 0 65px 0',
+            '@media (min-width: 992px)': '145px 0 65px 0',
+        },
     },
     title: {
         textAlign: 'center',
-        fontSize: '50px',
-        lineHeight: '1.2',
         marginBottom: '9px',
     },
-    description: {
+    subtitle: {
         textAlign: 'center',
-        fontSize: '24px',
-        lineHeight: '1.3',
     },
     content: {
         display: 'flex',
         alignItems: 'center',
-        marginTop: '130px',
+        justifyContent: 'space-between',
+        flexDirection: {
+            default: 'column',
+            '@media (min-width: 768px)': 'row',
+        },
+        marginTop: {
+            default: '40px',
+            '@media (min-width: 768px)': '60px',
+            '@media (min-width: 992px)': '80px',
+            '@media (min-width: 1200px)': '130px',
+        },
     },
     contentImag: {
-        width: '40%',
+        width: {
+            default: '100%',
+            '@media (min-width: 768px)': '35%',
+            '@media (min-width: 992px)': '40%',
+        },
+        textAlign: 'center',
     },
     contentText: {
         textAlign: 'center',
@@ -37,25 +53,48 @@ const style = stylex.create({
         marginBottom: '20px',
     },
     contentTexts: {
-        width: '60%',
+        width: {
+            default: '100%',
+            '@media (min-width: 768px)': '65%',
+            '@media (min-width: 992px)': '60%',
+        },
         display: 'flex',
         alignItems: 'center',
+        flexDirection: {
+            default: 'column',
+            '@media (min-width: 768px)': 'row',
+        },
         justifyContent: 'space-between',
-        gap: '26px',
+        gap: {
+            default: '20px',
+            '@media (min-width: 1200px)': '26px',
+        },
     },
     circle: {
-        background: '#fff',
+        background: colors.white,
         borderRadius: '50%',
-        width: '270px',
-        height: '270px',
-        padding: '18px',
-        boxShadow: '0px 2.024px 27.322px 0px rgba(0, 0, 0, 0.10)',
+        width: {
+            default: '170px',
+            '@media (min-width: 992px)': '200px',
+            '@media (min-width: 1200px)': '270px',
+        },
+        height: {
+            default: '170px',
+            '@media (min-width: 992px)': '200px',
+            '@media (min-width: 1200px)': '270px',
+        },
+        padding: {
+            default: '10px',
+            '@media (min-width: 992px)': '14px',
+            '@media (min-width: 1200px)': '18px',
+        },
+        boxShadow: shadow.shadowAround,
     },
     circleInner: {
         display: 'flex',
         width: '100%',
         height: '100%',
-        background: '#efefef',
+        background: colors.light,
         borderRadius: '50%',
         overflow: 'hidden',
     },
@@ -66,39 +105,78 @@ const style = stylex.create({
     circelText: {
         display: 'flex',
         alignItems: 'center',
-        background: '#4F59CC',
-        color: '#FFF',
-        fontSize: '20px',
+        background: colors.slateBlue,
+        color: colors.white,
+        fontSize: {
+            default: '1rem',
+            '@media (min-width: 992px)': '1.25rem',
+        },
         lineHeight: '1.2',
         padding: '16px 20px',
     },
     hours: {
         fontWeight: '700',
-        fontSize: '24px',
+        fontSize: {
+            default: '1.25rem',
+            '@media (min-width: 992px)': '1.5rem',
+        },
+    },
+    arrow: {
+        transform: {
+            default: 'rotate(90deg)',
+            '@media (min-width: 768px)': 'rotate(0)',
+        },
+    },
+    icons: {
+        width: {
+            default: '30px',
+            '@media (min-width: 992px)': '36px',
+            '@media (min-width: 1200px)': '46px',
+        },
+        height: 'auto',
     },
     buttons: {
         display: 'flex',
         flexDirection: 'column',
-        gap: '22px',
+        gap: {
+            default: '12px',
+            '@media (min-width: 992px)': '16px',
+            '@media (min-width: 1200px)': '22px',
+        },
     },
     btn: {
         display: 'block',
-        width: '260px',
-        height: '76px',
-        background: '#fff',
+        width: {
+            default: '180px',
+            '@media (min-width: 992px)': '220px',
+            '@media (min-width: 1200px)': '260px',
+        },
+        height: {
+            default: '50px',
+            '@media (min-width: 992px)': '62px',
+            '@media (min-width: 1200px)': '76px',
+        },
+        background: colors.white,
         borderRadius: '38px',
-        padding: '13px 11px',
-        boxShadow: '0px 2.024px 27.322px 0px rgba(0, 0, 0, 0.10)',
+        padding: {
+            default: '6px',
+            '@media (min-width: 992px)': '10px 10px',
+            '@media (min-width: 1200px)': '13px 11px',
+        },
+        boxShadow: shadow.shadowAround,
     },
     btnInner: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         height: '100%',
-        background: '#4F59CC',
+        background: colors.slateBlue,
         borderRadius: '38px',
-        color: '#FFF',
-        fontSize: '20px',
+        color: colors.white,
+        fontSize: {
+            default: '1rem',
+            '@media (min-width: 992px)': '1.25rem',
+        },
         lineHeight: '1',
         fontWeight: '500',
     },
@@ -108,8 +186,10 @@ const Hiring = () => {
     return (
         <section {...stylex.props(style.hiring)}>
             <Container>
-                <h3 {...stylex.props(style.title)}>Global Fractional Hiring Made Easy</h3>
-                <p {...stylex.props(style.description)}>
+                <h2 {...stylex.props(typography.heading2, style.title)}>
+                    Global Fractional Hiring Made Easy
+                </h2>
+                <p {...stylex.props(typography.textXl, style.subtitle)}>
                     We find you amazing talent that you can hire on a fractional basis in 24 hours -
                     It's that simple.
                 </p>
@@ -122,7 +202,7 @@ const Hiring = () => {
 
                     <div {...stylex.props(style.contentTexts)}>
                         <div>
-                            <img src={PlusIcon} alt='Plus icon' />
+                            <img src={PlusIcon} alt='Plus icon' {...stylex.props(style.icons)} />
                         </div>
 
                         <div {...stylex.props(style.circle)}>
@@ -136,8 +216,8 @@ const Hiring = () => {
                             </div>
                         </div>
 
-                        <div>
-                            <img src={ArrowIcon} alt='Arrow icon' />
+                        <div {...stylex.props(style.arrow)}>
+                            <img src={ArrowIcon} alt='Arrow icon' {...stylex.props(style.icons)} />
                         </div>
 
                         <div {...stylex.props(style.buttons)}>

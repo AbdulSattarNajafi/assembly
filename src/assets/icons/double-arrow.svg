@@ -1,0 +1,34 @@
+<svg width="11" height="16" viewBox="0 0 11 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="11" height="16" fill="#F5F5F5"/>
+<g id="AI_Login Page_1" clip-path="url(#clip0_0_1)">
+<rect width="1440" height="1923" transform="translate(-908 -838)" fill="white"/>
+<rect id="Rectangle 469" x="-191" y="-838" width="723" height="1020" fill="black"/>
+<g id="Rectangle 481" filter="url(#filter0_d_0_1)">
+<rect x="-123.23" y="-116.437" width="258.81" height="233.436" rx="33.8313" fill="white"/>
+<rect x="-121.962" y="-115.168" width="256.272" height="230.899" rx="32.5627" stroke="#EFEFEF" stroke-width="2.53735"/>
+</g>
+<g id="Group 189">
+<rect id="Rectangle 463" x="3.40186" y="5.00049" width="4" height="6" fill="black"/>
+<path id="Rectangle 464" d="M5.3826 15.7751L10.7651 10.3926H6.84296e-05L5.3826 15.7751Z" fill="black"/>
+<path id="Rectangle 465" d="M5.38253 -0.000210833L0 5.38232L10.7651 5.38232L5.38253 -0.000210833Z" fill="black"/>
+</g>
+<g id="Group 191">
+</g>
+</g>
+<defs>
+<filter id="filter0_d_0_1" x="-143.529" y="-124.894" width="299.407" height="274.034" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="8.45784" operator="erode" in="SourceAlpha" result="effect1_dropShadow_0_1"/>
+<feOffset dy="11.841"/>
+<feGaussianBlur stdDeviation="14.3783"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+</filter>
+<clipPath id="clip0_0_1">
+<rect width="1440" height="1923" fill="white" transform="translate(-908 -838)"/>
+</clipPath>
+</defs>
+</svg>

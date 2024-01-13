@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
+import { colors } from '../styles/tokens.stylex';
 
-type PropsType = {
+type SkillsTypes = {
     title: string;
     description: string;
     variant: 'light' | 'dark' | 'darker';
@@ -10,11 +11,24 @@ const style = stylex.create({
     skills: {
         display: 'flex',
         alignItems: 'center',
-        gap: '16px',
+        gap: '15px',
+        width: {
+            default: '280px',
+            '@media (min-width: 768px)': '320px',
+            '@media (min-width: 992px)': 'auto',
+        },
     },
     skillsHighlight: {
-        width: '15px',
-        height: '86px',
+        width: {
+            default: '10px',
+            '@media (min-width: 768px)': '12px',
+            '@media (min-width: 992px)': '15px 0',
+        },
+        height: {
+            default: '66px',
+            '@media (min-width: 768px)': '76px',
+            '@media (min-width: 992px)': '86px',
+        },
         borderRadius: '10px',
     },
     light: {
@@ -24,21 +38,29 @@ const style = stylex.create({
         background: 'rgba(79, 89, 204, 0.60)',
     },
     darker: {
-        background: '#4F59CC',
+        background: colors.slateBlue,
     },
     skillsTitle: {
-        fontSize: '40px',
-        fontWeight: 500,
+        fontSize: {
+            default: '30px',
+            '@media (min-width: 768px)': '32px',
+            '@media (min-width: 992px)': '40px',
+        },
+        fontWeight: '500',
         lineHeight: '1.2',
     },
     skillsText: {
-        fontSize: '27px',
-        color: '#868686',
+        fontSize: {
+            default: '20px',
+            '@media (min-width: 768px)': '22px',
+            '@media (min-width: 992px)': '27px',
+        },
+        color: colors.gray800,
         lineHeight: '1.2',
     },
 });
 
-const Skills = ({ title, description, variant }: PropsType) => {
+const Skills = ({ title, description, variant }: SkillsTypes) => {
     return (
         <div {...stylex.props(style.skills)}>
             <div {...stylex.props(style.skillsHighlight, style[variant])}></div>

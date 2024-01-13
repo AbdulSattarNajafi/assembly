@@ -1,5 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { HiMiniArrowRight } from 'react-icons/hi2';
+import GetstartCard from './GetstartCard';
+import { colors } from '../styles/tokens.stylex';
 
 type TeamMember = {
     id: string;
@@ -9,34 +11,24 @@ type TeamMember = {
     hourlyRate: number;
 };
 
-type PropsType = {
+type TeamWorkCardTypes = {
     teamMember: TeamMember[];
+    title: [string, string];
     isHighlighted?: boolean;
     coverImg?: string;
 };
 
 const style = stylex.create({
-    card: {
-        position: 'relative',
-        width: 'calc(25% - 23px)',
-        height: '100%',
-        background: '#fff',
-        border: '3px solid #EFEFEF',
-        borderRadius: '21px',
-        padding: '18px',
-        boxShadow: '0px 14px 34px -10px rgba(0, 0, 0, 0.10)',
-        overflow: 'hidden',
-    },
     cardCover: {
         position: 'absolute',
         inset: '0',
-        background: 'rgba(255, 255, 255, 0.8)',
+        background: colors.whiteOverlay,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         backdropFilter: 'blur(2px)',
     },
-    cardBody: {
+    cardContent: {
         display: 'flex',
         flexDirection: 'column',
         gap: '8px',
@@ -44,7 +36,7 @@ const style = stylex.create({
     cardRow: {
         display: 'flex',
         alignItems: 'center',
-        border: '1px solid #D6D6D6',
+        border: `1px solid ${colors.light600}`,
         borderRadius: '10px',
     },
     cardImg: {
@@ -54,13 +46,13 @@ const style = stylex.create({
         objectFit: 'cover',
         borderRadius: '10px 0 0 10px',
     },
-    cardContent: {
+    cardTexts: {
         flex: '1',
         fontSize: '10px',
         lineHeight: '1.5',
         padding: '0 8px',
     },
-    cardTitle: {
+    cardName: {
         fontSize: '15px',
         fontWeight: '700',
         lineHeight: '1.1',
@@ -87,27 +79,27 @@ const style = stylex.create({
     },
     cardBtnIcon: {
         fontSize: '12px',
-        color: '#4F59CC',
+        color: colors.slateBlue,
         lineHeight: '1',
     },
 });
 
-const TeamWorkCard = ({ teamMember, isHighlighted, coverImg }: PropsType) => {
+const TeamWorkCard = ({ teamMember, title, isHighlighted, coverImg }: TeamWorkCardTypes) => {
     return (
-        <div {...stylex.props(style.card)}>
+        <GetstartCard title={title}>
             {isHighlighted && (
                 <div {...stylex.props(style.cardCover)}>
                     <img src={coverImg} alt='Icon' />
                 </div>
             )}
 
-            <div {...stylex.props(style.cardBody)}>
+            <div {...stylex.props(style.cardContent)}>
                 {teamMember.map((team) => (
                     <div key={team.id} {...stylex.props(style.cardRow)}>
                         <img src={team.img} alt={team.name} {...stylex.props(style.cardImg)} />
 
-                        <div {...stylex.props(style.cardContent)}>
-                            <h5 {...stylex.props(style.cardTitle)}>{team.name}</h5>
+                        <div {...stylex.props(style.cardTexts)}>
+                            <h5 {...stylex.props(style.cardName)}>{team.name}</h5>
                             <p>{team.specialty}</p>
 
                             <div {...stylex.props(style.cardBtnRow)}>
@@ -123,7 +115,7 @@ const TeamWorkCard = ({ teamMember, isHighlighted, coverImg }: PropsType) => {
                     </div>
                 ))}
             </div>
-        </div>
+        </GetstartCard>
     );
 };
 

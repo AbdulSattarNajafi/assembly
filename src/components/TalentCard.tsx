@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex';
 import { HiMiniStar } from 'react-icons/hi2';
+import { colors, shadow } from '../styles/tokens.stylex';
 
-type PropsType = {
+type TalentCardTypes = {
     name: string;
     jobTitle: string;
     bgImage: string;
@@ -15,16 +16,19 @@ type PropsType = {
 const style = stylex.create({
     card: {
         width: '100%',
-        background: '#fff',
+        background: colors.white,
         borderRadius: '41px',
-        boxShadow: ' 0px 2.382px 32.153px 0px rgba(0, 0, 0, 0.10)',
+        boxShadow: shadow.shadowSm,
         overflow: 'hidden',
     },
     cardBg: {
         width: '100%',
-        height: '150px',
-        background:
-            'linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), lightgray 50% ',
+        height: {
+            default: '122px',
+            '@media (min-width: 768px)': '140px',
+            '@media (min-width: 992px)': '150px',
+        },
+        background: colors.talentCardBg,
         overflow: 'hidden',
     },
     cardBgImg: {
@@ -35,7 +39,11 @@ const style = stylex.create({
     },
     cardBody: {
         position: 'relative',
-        padding: '0 28px',
+        padding: {
+            default: '0 16px',
+            '@media (min-width: 768px)': '0 20px',
+            '@media (min-width: 992px)': '0 28px',
+        },
         zIndex: '2',
     },
     cardInfo: {
@@ -44,47 +52,86 @@ const style = stylex.create({
         alignItems: 'center',
         paddingBottom: '15px',
         textAlign: 'center',
-        fontSize: '22px',
+        fontSize: {
+            default: '18px',
+            '@media (min-width: 768px)': '20px',
+            '@media (min-width: 992px)': '22px',
+        },
         lineHeight: '34px',
     },
     cardImage: {
-        width: '186px',
-        height: '186px',
+        width: {
+            default: '152px',
+            '@media (min-width: 768px)': '162px',
+            '@media (min-width: 992px)': '186px',
+        },
+        height: {
+            default: '152px',
+            '@media (min-width: 768px)': '162px',
+            '@media (min-width: 992px)': '186px',
+        },
         borderRadius: '50%',
-        marginTop: '-93px',
+        marginTop: {
+            default: '-76px',
+            '@media (min-width: 768px)': '-81px',
+            '@media (min-width: 992px)': '-93px',
+        },
     },
     cardImageImg: {
         width: '100%',
     },
     cardTitle: {
         textAlign: 'center',
-        fontSize: '35px',
+        fontSize: {
+            default: '28px',
+            '@media (min-width: 768px)': '30px',
+            '@media (min-width: 992px)': '35px',
+        },
         fontWeight: '700',
         lineHeight: '1.1',
         marginTop: '11px',
     },
     cardStatus: {
-        padding: '22px 0',
-        borderTop: '1px solid #CECECE',
-        borderBottom: '1px solid #CECECE',
+        padding: {
+            default: '16px 0',
+            '@media (min-width: 768px)': '20px 0',
+            '@media (min-width: 992px)': '22px 0',
+        },
+        borderTop: `1px solid ${colors.gray100}`,
+        borderBottom: `1px solid ${colors.gray100}`,
     },
     stausRow: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom: '2px',
-        fontSize: '18px',
+        fontSize: {
+            default: '16px',
+            '@media (min-width: 992px)': '18px',
+        },
         lineHeight: '1.6',
     },
     rating: {
-        fontSize: '20px',
-        color: '#FFC226',
+        fontSize: {
+            default: '16px',
+            '@media (min-width: 992px)': '18px',
+        },
+        color: colors.stars,
     },
     expertise: {
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'center',
         gap: '12px',
-        padding: '42px 0',
+        padding: {
+            default: '20px 0',
+            '@media (min-width: 768px)': '32px 0',
+            '@media (min-width: 992px)': '42px 0',
+        },
+    },
+    expertiseImg: {
+        width: '30%',
+        height: 'auto',
     },
 });
 
@@ -97,7 +144,7 @@ const TalentCard = ({
     experience,
     rating,
     expertise,
-}: PropsType) => {
+}: TalentCardTypes) => {
     return (
         <div {...stylex.props(style.card)}>
             <div {...stylex.props(style.cardBg)}>
@@ -140,7 +187,7 @@ const TalentCard = ({
 
                 <div {...stylex.props(style.expertise)}>
                     {expertise.map((item, i) => (
-                        <img src={item} alt='Image' key={i} />
+                        <img src={item} alt='Image' key={i} {...stylex.props(style.expertiseImg)} />
                     ))}
                 </div>
             </div>

@@ -3,6 +3,8 @@ import { HiArrowSmallRight } from 'react-icons/hi2';
 
 import Container from '../components/Container';
 import PrimaryButton from '../components/PrimaryButton';
+import { typography } from '../styles/typography.stylex';
+import { colors } from '../styles/tokens.stylex';
 
 type PropsType = {
     heading1: string;
@@ -13,51 +15,47 @@ type PropsType = {
 
 const style = stylex.create({
     hero: {
-        display: 'flex',
-        alignItems: 'center',
-        height: '100dvh',
-        backgroundColor: '#000',
-        paddingTop: '120px',
-        paddingBottom: '20px',
+        backgroundColor: colors.black,
+        padding: {
+            default: '160px 0 100px 0',
+            '@media (min-width: 768px)': '200px 0 120px 0',
+        },
     },
     content: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         textAlign: 'center',
-        color: '#fff',
+        color: colors.white,
     },
     heading1: {
-        fontSize: '70px',
-        fontWeight: '700',
-        lineHeight: '1.2',
         marginBottom: '2rem',
     },
     heading2: {
         position: 'relative',
         fontWeight: '400',
-        marginBottom: '0',
         zIndex: '2',
     },
     image: {
         transform: 'translateY(-10px)',
-        marginBottom: '30px',
+        marginBottom: {
+            default: '3rem',
+            '@media (min-width: 768px)': '2rem',
+        },
     },
     text: {
         marginTop: '1.5rem',
-        fontSize: '20px',
-        color: '#A6A6A6',
-        lineHeight: '1.2',
+        color: colors.grayText,
     },
 });
 
 const Hero = ({ heading1, heading2, image, text }: PropsType) => {
     return (
-        <section {...stylex.props(style.hero)} id='hero'>
+        <section {...stylex.props(style.hero)}>
             <Container>
                 <div {...stylex.props(style.content)}>
-                    <h1 {...stylex.props(style.heading1)}>{heading1}</h1>
-                    <h2 {...stylex.props(style.heading1, style.heading2)}>{heading2}</h2>
+                    <h1 {...stylex.props(typography.heading1, style.heading1)}>{heading1}</h1>
+                    <h2 {...stylex.props(typography.heading1, style.heading2)}>{heading2}</h2>
                     <div {...stylex.props(style.image)}>
                         <img src={image} alt='Image' />
                     </div>
@@ -67,7 +65,7 @@ const Hero = ({ heading1, heading2, image, text }: PropsType) => {
                             <span>Get started</span>
                             <HiArrowSmallRight />
                         </PrimaryButton>
-                        <p {...stylex.props(style.text)}>{text}</p>
+                        <p {...stylex.props(typography.textLg, style.text)}>{text}</p>
                     </div>
                 </div>
             </Container>

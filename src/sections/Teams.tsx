@@ -11,36 +11,63 @@ import Team2 from './../assets/images/team-2.png';
 import Team3Bg from './../assets/images/team-3-bg.png';
 import Team3 from './../assets/images/team-3.png';
 import CostCard from '../components/CostCard';
+import { typography } from '../styles/typography.stylex';
+import { colors, shadow } from '../styles/tokens.stylex';
 
 const style = stylex.create({
     team: {
-        paddingTop: '65px',
-        paddingBottom: '113px',
+        padding: {
+            default: '40px 0 80px 0',
+            '@media (min-width: 768px)': '165px 0 100px 0',
+            '@media (min-width: 992px)': '65px 0 112px 0',
+        },
     },
     title: {
         textAlign: 'center',
-        fontSize: '50px',
-        fontWeight: '500',
-        lineHeight: '1.3',
     },
     content: {
         display: 'flex',
-        alignItems: 'center',
-        gap: '26px',
-        paddingTop: '82px',
-        paddingBottom: '94px',
-        // border: '1px solid red',
+        alignItems: {
+            default: 'stretch',
+        },
+        flexDirection: {
+            default: 'column',
+            '@media (min-width: 992px)': 'row',
+        },
+        gap: {
+            default: '16px',
+            '@media (min-width: 1200px)': '26px',
+        },
+        padding: {
+            default: '40px 0',
+            '@media (min-width: 992px)': '86px 0',
+        },
     },
     contentTexts: {
-        width: '294px',
+        width: {
+            default: '100%',
+            '@media (min-width: 992px)': '240px',
+            '@media (min-width: 1200px)': '294px',
+        },
+        textAlign: {
+            default: 'center',
+            '@media (min-width: 992px)': 'left',
+        },
     },
     contentTitle: {
         display: 'flex',
         alignItems: 'center',
+        justifyContent: {
+            default: 'center',
+            '@media (min-width: 992px)': 'flex-start',
+        },
         gap: '14px',
-        fontSize: '24px',
+        fontSize: {
+            default: '1.125rem',
+            '@media (min-width: 1200px)': '1.5rem',
+        },
         fontWeight: '700',
-        color: '#4F59CC',
+        color: colors.slateBlue,
         marginBottom: '16px',
     },
     titleIcon: {
@@ -50,38 +77,50 @@ const style = stylex.create({
         display: 'flex',
         flexDirection: 'column',
         gap: '10px',
-        fontSize: '24px',
+        fontSize: {
+            default: '1rem',
+            '@media (min-width: 992px)': '1.125rem',
+            '@media (min-width: 1200px)': '1.5rem',
+        },
         paddingLeft: '24px',
     },
     card: {
         flex: '1',
-        backgroundColor: '#fff',
-        border: '3px solid #EFEFEF',
+        backgroundColor: colors.white,
+        border: `3px solid ${colors.light}`,
         borderRadius: '42px',
-        boxShadow: '0px 14px 34px -10px rgba(0, 0, 0, 0.10)',
+        boxShadow: shadow.shadowMd,
     },
     cardHeader: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
         padding: '15px 24px',
-        borderBottom: '3px solid #EFEFEF',
+        borderBottom: `3px solid ${colors.light}`,
     },
     cardTitle: {
-        fontSize: '30px',
+        textAlign: {
+            default: 'center',
+            '@media (min-width: 576px)': 'left',
+        },
         fontWeight: '700',
     },
     cardBody: {
         display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr) 180px',
-        gridColumnGap: '12px',
-        padding: '24px 20px',
+        gridTemplateColumns: {
+            default: '1fr',
+            '@media (min-width: 474px)': 'repeat(2, 1fr)',
+            '@media (min-width: 768px)': 'repeat(3, 1fr) 150px',
+            '@media (min-width: 1200px)': 'repeat(3, 1fr) 180px',
+        },
+        gap: '12px',
+        padding: {
+            default: '12px',
+            '@media (min-width: 768px)': '16px',
+            '@media (min-width: 992px)': '24px 20px',
+        },
     },
     button: {
         display: 'flex',
         justifyContent: 'center',
     },
-
     costCards: {
         display: 'flex',
         flexDirection: 'column',
@@ -93,7 +132,9 @@ const Teams = () => {
     return (
         <section {...stylex.props(style.team)}>
             <Container>
-                <h3 {...stylex.props(style.title)}>We Assemble Expert Teams that Drive Outcomes</h3>
+                <h2 {...stylex.props(typography.heading2, style.title)}>
+                    We Assemble Expert Teams that Drive Outcomes
+                </h2>
 
                 <div {...stylex.props(style.content)}>
                     <div {...stylex.props(style.contentTexts)}>
@@ -123,8 +164,9 @@ const Teams = () => {
 
                     <div {...stylex.props(style.card)}>
                         <div {...stylex.props(style.cardHeader)}>
-                            <h5 {...stylex.props(style.cardTitle)}>Marketing Automation Experts</h5>
-                            <div>dots</div>
+                            <h4 {...stylex.props(typography.heading4, style.cardTitle)}>
+                                Marketing Automation Experts
+                            </h4>
                         </div>
 
                         <div {...stylex.props(style.cardBody)}>
@@ -138,7 +180,6 @@ const Teams = () => {
                                 rating={5}
                                 availablity={40}
                             />
-
                             <TeamCard
                                 name='Darsh'
                                 jobTitle='Hubspot Developer'

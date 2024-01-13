@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
+import { colors, shadow } from '../styles/tokens.stylex';
 
-type PropsType = {
+type CostCardTypes = {
     description: string;
     price: string;
     isActive?: boolean;
@@ -14,10 +15,10 @@ const style = stylex.create({
         width: '100%',
         height: '50%',
         textAlign: 'center',
-        background: '#fff',
-        border: '1px solid #EFEFEF',
+        background: colors.white,
+        border: `1px solid ${colors.light}`,
         borderRadius: '23px',
-        color: '#B0B0B0',
+        color: colors.gray600,
         padding: '1rem',
     },
     description: {
@@ -27,18 +28,21 @@ const style = stylex.create({
         marginBottom: '6px',
     },
     price: {
-        fontSize: '20px',
+        fontSize: {
+            default: '1rem',
+            '@media (min-width: 768px)': '1.25rem',
+        },
         fontWeight: '700',
         lineHeight: '1.2',
     },
     active: {
-        color: '#000',
-        borderColor: '#000',
-        boxShadow: '0px 4px 24px 0px rgba(0, 0, 0, 0.15)',
+        color: colors.black,
+        borderColor: colors.black,
+        boxShadow: shadow.shadowLg,
     },
 });
 
-const CostCard = ({ description, price, isActive }: PropsType) => {
+const CostCard = ({ description, price, isActive }: CostCardTypes) => {
     return (
         <div {...stylex.props(style.card, isActive && style.active)}>
             <div>

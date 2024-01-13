@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import * as stylex from '@stylexjs/stylex';
 import { HiArrowSmallRight } from 'react-icons/hi2';
+import { colors, shadow } from '../styles/tokens.stylex';
 
 const style = stylex.create({
     section: {
@@ -41,31 +42,38 @@ const style = stylex.create({
         transform: 'translate(-50%, -45%)',
         fontSize: '5rem',
         fontWeight: '700',
-        color: '#4F59CC',
+        color: colors.slateBlue,
         lineHeight: '1.2',
         opacity: '0.5',
     },
     text: {
-        color: '#979797',
-        fontSize: '20px',
+        color: colors.grayText,
+        fontSize: {
+            default: '1.125rem',
+            '@media (min-width: 768px)': '1.25rem',
+        },
+        textWrap: 'balance',
         marginBottom: '32px',
     },
     btn: {
         display: 'inline-flex',
         alignItems: 'center',
         gap: '4px',
-        color: '#FFF',
+        color: colors.white,
         textAlign: 'center',
-        fontSize: '18px',
-        fontWeight: '700',
+        fontSize: {
+            default: '1rem',
+            '@media (min-width: 768px)': '1.125rem',
+        },
+        fontWeight: '600',
         letterSpacing: '2.16px',
         textTransform: 'uppercase',
         lineHeight: '1.5',
         padding: '11px 22px',
-        border: '1px solid #4F59CC',
-        backgroundColor: '#4F59CC',
+        border: `1px solid ${colors.slateBlue}`,
+        backgroundColor: colors.slateBlue,
         borderRadius: '35px',
-        boxShadow: '0px 30px 40px -20px rgba(79, 89, 204, 0.60)',
+        boxShadow: shadow.shadowBlue,
     },
 });
 

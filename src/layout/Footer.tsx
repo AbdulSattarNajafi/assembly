@@ -6,81 +6,156 @@ import { Link as ScrollLink } from 'react-scroll';
 import Container from '../components/Container';
 import FooterImage from './../assets/images/footer.png';
 import FooterLogo from './../assets/icons/footer-logo.svg';
+import { colors } from '../styles/tokens.stylex';
+import { typography } from '../styles/typography.stylex';
 
 const style = stylex.create({
     footer: {
-        backgroundColor: '#000',
-        paddingTop: '120px',
-        paddingBottom: '70px',
+        backgroundColor: colors.black,
+        padding: {
+            default: '100px 0 40px 0',
+            '@media (min-width: 768px)': '120px 0 70px 0',
+        },
+        marginTop: 'auto',
     },
     content: {
         display: 'flex',
+        flexDirection: {
+            default: 'column',
+            '@media (min-width: 768px)': 'row',
+        },
+        alignItems: {
+            default: 'center',
+            '@media (min-width: 768px)': 'flex-start',
+        },
     },
     texts: {
-        width: '55%',
+        width: {
+            default: '100%',
+            '@media (min-width: 768px)': '55%',
+        },
         textAlign: 'center',
-        fontSize: '24px',
-        color: '#fff',
-        paddingRight: '65px',
-        paddingBottom: '80px',
-        // border: '1px solid red',
+        fontSize: {
+            default: '1.25rem',
+            '@media (min-width: 768px)': '1.5rem',
+        },
+        color: colors.white,
+        padding: {
+            default: '0 0 2rem 0',
+            '@media (min-width: 768px)': '0 20px 40px 0',
+            '@media (min-width: 992px)': '0 65px 80px 0',
+        },
     },
     title: {
-        fontSize: '50px',
-        lineHeight: '1.2',
-        fontWeight: '500',
         marginTop: '1rem',
         marginBottom: '30px',
     },
     links: {
-        width: '45%',
-        paddingLeft: '65px',
-        color: '#878787',
-        // border: '1px solid red',
+        width: {
+            default: '100%',
+            '@media (min-width: 768px)': '45%',
+        },
+        padding: {
+            default: '0',
+            '@media (min-width: 768px)': '0 0 0 20px',
+            '@media (min-width: 992px)': '0 0 0 65px',
+        },
+        textAlign: {
+            default: 'center',
+            '@media (min-width: 768px)': 'left',
+        },
+        textWrap: 'balance',
+        color: colors.gray800,
     },
     logo: {
         display: 'inline-block',
-        width: '210px',
-        marginBottom: '40px',
+        width: {
+            default: '140px',
+            '@media (min-width: 768px)': '180px',
+            '@media (min-width: 992px)': '210px',
+        },
+        marginBottom: {
+            default: '2rem',
+            '@media (min-width: 768px)': '40px',
+        },
     },
     menu: {
         marginTop: '24px',
     },
     menuTitle: {
-        fontSize: '24px',
-        color: '#fff',
+        fontSize: {
+            default: '1.125rem',
+            '@media (min-width: 768px)': '1.5rem',
+        },
+        color: colors.white,
         fontWeight: '700',
         lineHeight: '2',
-        marginBottom: '8px',
+        marginBottom: {
+            default: '0',
+            '@media (min-width: 768px)': '8px',
+        },
     },
     menuList: {
         display: 'grid',
-        gridTemplateColumns: '120px 160px',
+        gridTemplateColumns: {
+            default: 'auto',
+            '@media (min-width: 768px)': '120px 160px',
+        },
+        justifyContent: {
+            default: 'center',
+            '@media (min-width: 768px)': 'start',
+        },
         gridColumnGap: '20px',
         gridRowGap: '5px',
     },
     menuLink: {
         display: 'block',
-        color: '#878787',
+        color: colors.gray800,
     },
     copyright: {
         display: 'flex',
-        alignItems: 'center',
+        flexDirection: {
+            default: 'column',
+            '@media (min-width: 768px)': 'row',
+        },
+        alignItems: {
+            default: 'stretch',
+            '@media (min-width: 768px)': 'center',
+        },
         justifyContent: 'space-between',
+        gap: '1rem',
         textAlign: 'center',
-        paddingTop: '50px',
-        borderTop: '1px solid #5E5E5E',
-        color: '#878787',
+        paddingTop: {
+            default: '1.25rem',
+            '@media (min-width: 768px)': '25px',
+            '@media (min-width: 992px)': '50px',
+        },
+        borderTop: {
+            default: 'none',
+            '@media (min-width: 768px)': `1px solid ${colors.gray500}`,
+        },
+        color: colors.gray800,
     },
     copyrightList: {
         display: 'flex',
         alignItems: 'center',
-        gap: '15px',
+        justifyContent: {
+            default: 'center',
+        },
+        gap: '1rem',
+        borderBottom: {
+            default: `1px solid ${colors.gray500}`,
+            '@media (min-width: 768px)': 'none',
+        },
+        paddingBottom: {
+            default: '1.25rem',
+            '@media (min-width: 768px)': '0',
+        },
     },
     copyrightLink: {
         display: 'inline-block',
         fontSize: '1.25rem',
-        color: '#fff',
+        color: colors.white,
     },
     linkUp: {
         display: 'flex',
@@ -88,11 +163,15 @@ const style = stylex.create({
         justifyContent: 'center',
         width: '40px',
         height: '40px',
-        backgroundColor: '#4F59CC',
+        margin: {
+            default: '1rem auto 0 auto',
+            '@media (min-width: 768px)': '0',
+        },
+        backgroundColor: colors.slateBlue,
         borderRadius: '50%',
         fontSize: '1.25rem',
         lineHeight: '1',
-        color: '#fff',
+        color: colors.white,
         cursor: 'pointer',
     },
 });
@@ -104,7 +183,9 @@ const Footer = () => {
                 <div {...stylex.props(style.content)}>
                     <div {...stylex.props(style.texts)}>
                         <p>Critical Project Work Completed by Top 1% Experts</p>
-                        <h3 {...stylex.props(style.title)}>At a Fraction of the Cost</h3>
+                        <h3 {...stylex.props(typography.heading2, style.title)}>
+                            At a Fraction of the Cost
+                        </h3>
                         <div>
                             <img src={FooterImage} alt='Image' />
                         </div>
@@ -165,7 +246,7 @@ const Footer = () => {
                         <span>Assembly Industries. All rights reserved.</span>
                     </p>
                     <ScrollLink
-                        to='hero'
+                        to='header'
                         spy={true}
                         smooth={true}
                         offset={0}

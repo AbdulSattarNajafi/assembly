@@ -1,9 +1,10 @@
-import GetStart from '../sections/GetStart';
 import Hero from '../sections/Hero';
 import Hiring from '../sections/Hiring';
-import Pricing from '../sections/Pricing';
-import Talent from '../sections/Talent';
 import Teams from '../sections/Teams';
+import Talent from '../sections/Talent';
+import GetStart from '../sections/GetStart';
+import Pricing from '../sections/Pricing';
+
 import HeroImage from './../assets/images/hero.png';
 
 const Home = () => {

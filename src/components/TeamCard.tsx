@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex';
 import { HiMiniStar } from 'react-icons/hi2';
+import { colors } from '../styles/tokens.stylex';
 
-type PropsType = {
+type TeamCardTypes = {
     name: string;
     jobTitle: string;
     bgImage: string;
@@ -15,16 +16,15 @@ type PropsType = {
 const style = stylex.create({
     card: {
         width: '100%',
-        background: '#fff',
-        border: '1px solid #E3E3E3',
+        background: colors.white,
+        border: `1px solid ${colors.light50}`,
         borderRadius: '22px',
         overflow: 'hidden',
     },
     cardBg: {
         width: '100%',
         height: '80px',
-        background:
-            'linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), lightgray 50% ',
+        background: colors.talentCardBg,
         overflow: 'hidden',
     },
     cardBgImg: {
@@ -35,7 +35,10 @@ const style = stylex.create({
     },
     cardBody: {
         position: 'relative',
-        padding: '0 15px',
+        padding: {
+            default: '0 10px',
+            '@media (min-width: 768px)': '0 15px',
+        },
         zIndex: '2',
     },
     cardInfo: {
@@ -55,15 +58,18 @@ const style = stylex.create({
     },
     cardTitle: {
         textAlign: 'center',
-        fontSize: '18px',
+        fontSize: {
+            default: '1rem',
+            '@media (min-width: 768px)': '1.125rem',
+        },
         fontWeight: '700',
         lineHeight: '20px',
         marginTop: '6px',
     },
     cardStatus: {
         padding: '14px 0',
-        borderTop: '1px solid #CECECE',
-        borderBottom: '1px solid #CECECE',
+        borderTop: `1px solid ${colors.gray100}`,
+        borderBottom: `1px solid ${colors.gray100}`,
     },
     stausRow: {
         display: 'flex',
@@ -75,7 +81,7 @@ const style = stylex.create({
     },
     rating: {
         fontSize: '12px',
-        color: '#FFC226',
+        color: colors.stars,
     },
     progress: {
         paddingTop: '7px',
@@ -88,13 +94,16 @@ const style = stylex.create({
         marginBottom: '4px',
     },
     progressBar: {
-        background: '#E8E8E9',
-        border: '1px solid #D5D5D5',
+        background: colors.light400,
+        border: `1px solid ${colors.light500}`,
         borderRadius: '6px',
     },
     progressInner: {
-        backgroundColor: '#4F59CC',
-        height: '5px',
+        backgroundColor: colors.slateBlue,
+        height: {
+            default: '3px',
+            '@media (min-width: 768px)': '5px',
+        },
         borderRadius: '6px',
     },
 });
@@ -108,7 +117,7 @@ const TeamCard = ({
     experience,
     rating,
     availablity,
-}: PropsType) => {
+}: TeamCardTypes) => {
     return (
         <div {...stylex.props(style.card)}>
             <div {...stylex.props(style.cardBg)}>
